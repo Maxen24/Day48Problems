@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+<title>Test Ajax Services and Promise</title>
+<style>
+    .body { margin: auto; }
+    div {
+        border: 1px solid
+        black;
+        background-color: Olightblue;
+        padding: 50px;
+        width: 80%;
+        font-size:xx-large;
+        margin-top: 50px;
+
+    }
+
+</style>
+
+</head>
+
+
+<body>
+    <h1>The Test Serices Result</h1>
+    <div id="get_services" ></div>
+    <div id="delete_services" ></div>
+    <div id="post_services" ></div>
+    <script>
+        const getElem = document.querySelector("#get_services");
+        const getURL="http://127.0.0.1:5500/employees/1"; makePromiseCall("GET", getURL, true)
+        .then(responseText => {
+            getElem.textContent = "Get User Data: "+responseText;
+        })
+        .catch(error => {
+            getElem.textContent = "GET Error Status: "+JSON.stringify(error);
+            })
+    const deleteElem = document.querySelector("#delete_services");
+    const deleteURL= "http://127.0.0.1:5500/employees/4";
+    makePromiseCall("DELETE", deleteURL, false) 
+            .then(responseText => { 
+                deleteElem.textContent = "Delete Data: "+responseText;
+        })
+        .catch(error => {
+            deleteElem.textContent = "DELETE Error Status: "+JSON.stringify(error);    
+            const postElem = document.querySelector("#post_services");
+        const postURL="http://127.0.0.1:5500/employees";
+        const emplData = {"name": "Harry","salary": "5000"};
+        makePromiseCall("POST", postURL, true, emplData) 
+                .then(responseText => {   
+                    postElem.textContent = "New User Data: "+responseText;
+                })
+                .catch(error => {
+                     postElem.textContent = "POST Error Status: "+JSON.stringify(error);
+                })
+            })
+        </script>
+
+<script src="http_services.js"></script>
+<script src="AjaxCallback.js"></script>
+<script src="AjaxPromise.js"></script>
+<script src="db.json"></script>
+<script src="timer.js"></script>
+
+     </body> 
+ </html>
+    
+
+    
+{
+
+    "employees": [
+        {
+            "id": 1,
+            "name": "Pankaj",
+            "salary": "10000"
+        },
+        {
+            "id": 2,
+            "name": "Lisa",
+             "salary": "8000"
+        },
+        {
+            "name": "Terisa",
+             "id": 3,
+             "salary": "10000",
+        },
+        {
+            "name": "Harry",
+            "salary": "5000",
+            "id": 4
+        }
+    ]
+    
+}
+        
