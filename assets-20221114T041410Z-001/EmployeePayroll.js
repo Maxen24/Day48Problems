@@ -44,7 +44,8 @@ const checkForUpdate = () => {
             }
         })
     }
-// uc3 employeepayroll.js
+
+    // uc3 employeepayroll.js
 class EmployeePayrollData {
     // getter and setter method
     get id() { return this._id; }
